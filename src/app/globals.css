@@ -1,22 +1,150 @@
+/* src/app/globals.css */
+
+/* --- ADD THESE LINES TO THE VERY TOP --- */
+html, body {
+  height: 100%;
+}
+/* --- END ADDITION --- */
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
 :root {
-	line-height: 1.5;
-	font-weight: 400;
-	font-synthesis: none;
-	text-rendering: optimizeLegibility;
-	-webkit-font-smoothing: antialiased;
-	-moz-osx-font-smoothing: grayscale;
-	font-family: 'Inter', sans-serif;
-	font-optical-sizing: auto;
-	font-style: normal;
-	font-variation-settings: 'slnt' 0;
+  /* Rossi Creative Studio - Default (Dark) Mode Colors */
+  /* Using your deep blues as the default background */
+  --background: 23 32 85; /* #172055 - Deep Blue */
+  --foreground: 240 240 240; /* #F0F0F0 - Light Gray for general text */
+
+  /* Primary Accent - Rossi Red (for buttons) */
+  --primary-accent: 193 39 45; /* #c1272d */
+
+  /* Secondary Background / H2 Color - Lighter Blue for sections and H2 titles */
+  --secondary-bg: 19 78 163; /* #134ea3 */
+
+  /* H1 Color - Dark Pink */
+  --accent-pink-dark: 168 24 89;  /* #a81859 */
+
+  /* Light Pink (for potential future use, e.g., H3s or subtle highlights) */
+  --accent-pink-light: 213 29 114; /* #d51d72 */
+
+  /* YouMe-specific colors (keep if still needed globally, otherwise remove) */
+  --youme-green: 0 255 209; /* #00FFD1 */
+  --youme-green-dark: 0 224 184; /* #00E0B8 */
+
+  line-height: 1.5;
+  font-weight: 400;
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font-family: sans-serif;
+  font-optical-sizing: auto;
+  font-style: normal;
+  font-variation-settings: 'slnt' 0;
+}
+
+.dark {
+  /* Since your default theme seems to be dark, these can be consistent with :root
+     unless you have specific dark mode overrides. */
+  --background: 23 32 85; /* #172055 */
+  --foreground: 240 240 240; /* #F0F0F0 */
+  --primary-accent: 193 39 45; /* #c1272d */
+  --secondary-bg: 19 78 163; /* #134ea3 */
+  --accent-pink-dark: 168 24 89;  /* #a81859 */
+  --accent-pink-light: 213 29 114; /* #d51d72 */
+
+  /* YouMe-specific colors for dark mode (if different, otherwise inherit from :root) */
+  /* --youme-green: ... */
+}
+
+
+/* ANIMATED BACKGROUND (Inspired by Crypto Moda) */
+/* The main container for the background */
+.app-background {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+  /* Use the CSS variable for the background color */
+  background-color: rgb(var(--background));
+}
+
+/* Base style for all star layers */
+.stars, .stars2, .stars3 {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: transparent;
+}
+
+/* Layer 1: Closest, brighter, faster */
+.stars {
+  background-image:
+    radial-gradient(2px 2px at 20px 30px, #eee, transparent),
+    radial-gradient(2px 2px at 40px 70px, rgba(255,255,255,0.8), transparent),
+    radial-gradient(1px 1px at 90px 40px, #fff, transparent);
+  background-repeat: repeat;
+  background-size: 200px 100px;
+  animation: zoom 20s infinite;
+  opacity: 0.4;
+}
+
+/* Layer 2: Medium distance, less bright, medium speed */
+.stars2 {
+  background-image:
+    radial-gradient(1px 1px at 50px 50px, #fff, transparent),
+    radial-gradient(1px 1px at 100px 80px, rgba(255,255,255,0.6), transparent);
+  background-repeat: repeat;
+  background-size: 250px 120px;
+  animation: zoom 25s infinite;
+  opacity: 0.3;
+}
+
+/* Layer 3: Furthest, faintest, slowest */
+.stars3 {
+  background-image:
+    radial-gradient(1px 1px at 75px 25px, rgba(255,255,255,0.5), transparent),
+    radial-gradient(2px 2px at 125px 75px, rgba(255,255,255,0.4), transparent);
+  background-repeat: repeat;
+  background-size: 300px 150px;
+  animation: zoom 30s infinite;
+  opacity: 0.2;
+}
+
+/* The zoom animation (applies to all star layers) */
+@keyframes zoom {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.2); }
+  100% { transform: scale(1); }
 }
 
 @layer base {
-	body {
-		@apply bg-zinc-950 text-neutral-200;
-	}
+  body {
+    background-color: rgb(var(--background));
+    color: rgb(var(--foreground));
+  }
 }
+/* === Section color tokens === */
+:root{
+  --rcc-branding: 255 59 65;   /* #ff3b41 Rossi Red */
+  --rcc-ads:      255 138 61;  /* #ff8a3d Sunset Orange */
+  --rcc-anim:     47 215 226;  /* #2fd7e2 Cyan */
+  --rcc-web3:     155 107 255; /* #9b6bff Violet */
+}
+
+/* Headings tint */
+.heading-branding{ color: rgb(var(--rcc-branding)); }
+.heading-ads{      color: rgb(var(--rcc-ads)); }
+.heading-anim{     color: rgb(var(--rcc-anim)); }
+.heading-web3{     color: rgb(var(--rcc-web3)); }
+
+/* Optional: soft glow for headings */
+.glow-branding{text-shadow: 0 0 .6rem rgba(255,59,65,.35);}
+.glow-ads{     text-shadow: 0 0 .6rem rgba(255,138,61,.35);}
+.glow-anim{    text-shadow: 0 0 .6rem rgba(47,215,226,.35);}
+.glow-web3{    text-shadow: 0 0 .6rem rgba(155,107,255,.35);}

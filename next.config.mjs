@@ -1,10 +1,12 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  // fixes wallet connect dependency issue https://docs.walletconnect.com/web3modal/nextjs/about#extra-configuration
-  webpack: (config) => {
-    config.externals.push("pino-pretty", "lokijs", "encoding");
-    return config;
+  images: {
+    remotePatterns: [
+      { protocol: 'https', hostname: 'placehold.co', pathname: '/**' },
+      // add any other external image hosts you use with <Image src="https://...">
+    ],
   },
+  // CSP handled by src/middleware.ts
 };
 
 export default nextConfig;
