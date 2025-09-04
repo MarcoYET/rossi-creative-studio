@@ -1,12 +1,6 @@
 // app/contact/page.tsx
 import Link from "next/link";
-import {
-  FaXTwitter,
-  FaLinkedinIn,
-  FaBehance,
-  FaDribbble,
-  FaFacebook,
-} from "react-icons/fa6";
+import { FaXTwitter, FaLinkedinIn, FaFacebook } from "react-icons/fa6";
 
 // Your real social URLs
 const socials = {
@@ -14,8 +8,6 @@ const socials = {
   linkedin: "https://www.linkedin.com/in/marco-rossi-343877381/",
   facebook:
     "https://www.facebook.com/people/Rossi-Creative-Studio/61580093278129/",
-  behance: "https://behance.net/your_rossi_profile",
-  dribbble: "https://dribbble.com/your_rossi_profile",
 };
 
 export default function ContactPage() {
@@ -32,11 +24,12 @@ export default function ContactPage() {
         }}
       >
         <div className="pointer-events-none absolute inset-0 -z-10 bg-[radial-gradient(120%_80%_at_100%_0%,rgba(var(--rcc-branding),0.10),transparent_55%),radial-gradient(120%_80%_at_0%_100%,rgba(var(--rcc-web3),0.10),transparent_55%)]" />
-        <h1 className="font-industry text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-extrabold text-[color:rgb(var(--rcc-branding))] mb-4">
+        <h1 className="font-industry text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-extrabold text-[rgb(var(--rcc-branding))] mb-4">
           Get in Touch with Rossi Creative Studio
         </h1>
         <p className="max-w-3xl text-lg sm:text-xl md:text-2xl leading-relaxed mb-8 text-foreground/90">
-          We’re excited to hear about your project! Reach out to us through the following channels.
+          We’re excited to hear about your project! Reach out to us through the
+          following channels.
         </p>
 
         <p className="font-newbery text-sm text-foreground/50 mt-2">
@@ -55,7 +48,7 @@ export default function ContactPage() {
         }}
       >
         <div className="max-w-3xl mx-auto bg-white/5 backdrop-blur-md border border-white/10 shadow-lg rounded-lg p-8">
-          <h2 className="font-industry text-3xl font-bold mb-6 text-[color:rgb(var(--rcc-ads))] text-center">
+          <h2 className="font-industry text-3xl font-bold mb-6 text-[rgb(var(--rcc-ads))] text-center">
             Send Us a Message
           </h2>
 
@@ -71,10 +64,7 @@ export default function ContactPage() {
             />
 
             <div>
-              <label
-                htmlFor="name"
-                className="font-newbery block text-sm font-bold mb-2"
-              >
+              <label htmlFor="name" className="font-newbery block text-sm font-bold mb-2">
                 Name
               </label>
               <input
@@ -83,16 +73,13 @@ export default function ContactPage() {
                 type="text"
                 placeholder="Your Name"
                 autoComplete="name"
-                className="font-newbery shadow appearance-none border rounded w-full py-2 px-3 text-background leading-tight bg-foreground/10 border-foreground/20 placeholder-foreground/50 focus:outline-none focus:ring-2 focus:ring-[color:rgb(var(--rcc-branding))] focus:border-[color:rgb(var(--rcc-branding))]"
+                className="font-newbery shadow appearance-none border rounded w-full py-2 px-3 text-background leading-tight bg-foreground/10 border-foreground/20 placeholder-foreground/50 focus:outline-none focus:ring-2 focus:ring-[rgb(var(--rcc-branding))] focus:border-[rgb(var(--rcc-branding))]"
                 required
               />
             </div>
 
             <div>
-              <label
-                htmlFor="email"
-                className="font-newbery block text-sm font-bold mb-2"
-              >
+              <label htmlFor="email" className="font-newbery block text-sm font-bold mb-2">
                 Email
               </label>
               <input
@@ -104,16 +91,13 @@ export default function ContactPage() {
                 autoCapitalize="none"
                 spellCheck={false}
                 inputMode="email"
-                className="font-newbery shadow appearance-none border rounded w-full py-2 px-3 text-background leading-tight bg-foreground/10 border-foreground/20 placeholder-foreground/50 focus:outline-none focus:ring-2 focus:ring-[color:rgb(var(--rcc-branding))] focus:border-[color:rgb(var(--rcc-branding))]"
+                className="font-newbery shadow appearance-none border rounded w-full py-2 px-3 text-background leading-tight bg-foreground/10 border-foreground/20 placeholder-foreground/50 focus:outline-none focus:ring-2 focus:ring-[rgb(var(--rcc-branding))] focus:border-[rgb(var(--rcc-branding))]"
                 required
               />
             </div>
 
             <div>
-              <label
-                htmlFor="message"
-                className="font-newbery block text-sm font-bold mb-2"
-              >
+              <label htmlFor="message" className="font-newbery block text-sm font-bold mb-2">
                 Message
               </label>
               <textarea
@@ -122,7 +106,7 @@ export default function ContactPage() {
                 rows={5}
                 placeholder="Tell us about your project..."
                 autoComplete="on"
-                className="font-newbery shadow appearance-none border rounded w-full py-2 px-3 text-background leading-tight bg-foreground/10 border-foreground/20 placeholder-foreground/50 focus:outline-none focus:ring-2 focus:ring-[color:rgb(var(--rcc-branding))] focus:border-[color:rgb(var(--rcc-branding))]"
+                className="font-newbery shadow appearance-none border rounded w-full py-2 px-3 text-background leading-tight bg-foreground/10 border-foreground/20 placeholder-foreground/50 focus:outline-none focus:ring-2 focus:ring-[rgb(var(--rcc-branding))] focus:border-[rgb(var(--rcc-branding))]"
                 required
               />
             </div>
@@ -130,7 +114,7 @@ export default function ContactPage() {
             <div className="flex items-center justify-center">
               <button
                 type="submit"
-                className="font-industry bg-[color:rgb(var(--rcc-branding))] hover:brightness-110 text-white font-bold py-2 px-6 rounded-full focus:outline-none focus:ring-2 focus:ring-offset-0 focus:ring-[color:rgb(var(--rcc-branding))] transition-colors"
+                className="font-industry bg-[rgb(var(--rcc-branding))] hover:brightness-110 text-white font-bold py-2 px-6 rounded-full focus:outline-none focus:ring-2 focus:ring-offset-0 focus:ring-[rgb(var(--rcc-branding))] transition-colors"
               >
                 Send Message
               </button>
@@ -150,14 +134,14 @@ export default function ContactPage() {
         }}
       >
         <div className="max-w-7xl mx-auto">
-          <h2 className="font-industry text-3xl font-bold mb-6 text-[color:rgb(var(--rcc-web3))] text-center">
+          <h2 className="font-industry text-3xl font-bold mb-6 text-[rgb(var(--rcc-web3))] text-center">
             Other Ways to Connect
           </h2>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
             {/* Email card */}
-            <div className="text-center bg-white/5 p-6 rounded-lg shadow-md border border-white/10 transition hover:border-[color:rgb(var(--rcc-web3))]">
-              <div className="mb-4 w-16 h-16 bg-[color:rgb(var(--rcc-web3))]/20 rounded-full flex items-center justify-center text-3xl mx-auto text-[color:rgb(var(--rcc-web3))]">
+            <div className="text-center bg-white/5 p-6 rounded-lg shadow-md border border-white/10 transition hover:border-[rgb(var(--rcc-web3))]">
+              <div className="mb-4 w-16 h-16 bg-[rgb(var(--rcc-web3))]/20 rounded-full flex items-center justify-center text-3xl mx-auto text-[rgb(var(--rcc-web3))]">
                 📧
               </div>
               <h3 className="font-industry text-xl font-semibold mb-2 text-foreground">
@@ -168,15 +152,15 @@ export default function ContactPage() {
               </p>
               <a
                 href="mailto:marco@rossicreativestudio.com"
-                className="font-newbery block text-[color:rgb(var(--rcc-web3))] hover:underline mt-2"
+                className="font-newbery block text-[rgb(var(--rcc-web3))] hover:underline mt-2"
               >
                 marco@rossicreativestudio.com
               </a>
             </div>
 
             {/* Socials card */}
-            <div className="text-center bg-white/5 p-6 rounded-lg shadow-md border border-white/10 transition hover:border-[color:rgb(var(--rcc-web3))]">
-              <div className="mb-4 w-16 h-16 bg-[color:rgb(var(--rcc-web3))]/20 rounded-full flex items-center justify-center text-3xl mx-auto text-[color:rgb(var(--rcc-web3))]">
+            <div className="text-center bg-white/5 p-6 rounded-lg shadow-md border border-white/10 transition hover:border-[rgb(var(--rcc-web3))]">
+              <div className="mb-4 w-16 h-16 bg-[rgb(var(--rcc-web3))]/20 rounded-full flex items-center justify-center text-3xl mx-auto text-[rgb(var(--rcc-web3))]">
                 💬
               </div>
               <h3 className="font-industry text-xl font-semibold mb-2 text-foreground">
@@ -191,7 +175,8 @@ export default function ContactPage() {
                   target="_blank"
                   rel="noopener noreferrer"
                   aria-label="X (Twitter)"
-                  className="text-3xl hover:text-[color:rgb(var(--rcc-web3))] transition-colors"
+                  title="X (Twitter)"
+                  className="text-3xl hover:text-[rgb(var(--rcc-web3))] transition-colors"
                 >
                   <FaXTwitter />
                 </a>
@@ -200,7 +185,8 @@ export default function ContactPage() {
                   target="_blank"
                   rel="noopener noreferrer"
                   aria-label="LinkedIn"
-                  className="text-3xl hover:text-[color:rgb(var(--rcc-web3))] transition-colors"
+                  title="LinkedIn"
+                  className="text-3xl hover:text-[rgb(var(--rcc-web3))] transition-colors"
                 >
                   <FaLinkedinIn />
                 </a>
@@ -209,27 +195,10 @@ export default function ContactPage() {
                   target="_blank"
                   rel="noopener noreferrer"
                   aria-label="Facebook"
-                  className="text-3xl hover:text-[color:rgb(var(--rcc-web3))] transition-colors"
+                  title="Facebook"
+                  className="text-3xl hover:text-[rgb(var(--rcc-web3))] transition-colors"
                 >
                   <FaFacebook />
-                </a>
-                <a
-                  href={socials.behance}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  aria-label="Behance"
-                  className="text-3xl hover:text-[color:rgb(var(--rcc-web3))] transition-colors"
-                >
-                  <FaBehance />
-                </a>
-                <a
-                  href={socials.dribbble}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  aria-label="Dribbble"
-                  className="text-3xl hover:text-[color:rgb(var(--rcc-web3))] transition-colors"
-                >
-                  <FaDribbble />
                 </a>
               </div>
             </div>
@@ -248,7 +217,7 @@ export default function ContactPage() {
         }}
       >
         <div className="max-w-5xl mx-auto bg-white/5 backdrop-blur-md border border-white/10 shadow-lg rounded-lg p-8 text-center">
-          <h2 className="font-industry text-3xl font-bold mb-6 text-[color:rgb(var(--rcc-anim))]">
+          <h2 className="font-industry text-3xl font-bold mb-6 text-[rgb(var(--rcc-anim))]">
             Our Location
           </h2>
           <p className="font-newbery text-lg text-foreground/80 mb-6">
@@ -279,7 +248,7 @@ export default function ContactPage() {
         }}
       >
         <div className="max-w-7xl mx-auto">
-          <h2 className="font-industry text-3xl font-bold mb-6 text-[color:rgb(var(--rcc-branding))]">
+          <h2 className="font-industry text-3xl font-bold mb-6 text-[rgb(var(--rcc-branding))]">
             Have More Questions?
           </h2>
           <p className="font-newbery text-lg text-foreground/80 mb-8">
@@ -288,7 +257,7 @@ export default function ContactPage() {
           </p>
           <Link
             href="/faq"
-            className="font-industry bg-[color:rgb(var(--rcc-branding))] hover:brightness-110 text-white font-bold py-3 px-8 rounded-full text-lg shadow-lg transition-transform transform hover:scale-105"
+            className="font-industry bg-[rgb(var(--rcc-branding))] hover:brightness-110 text-white font-bold py-3 px-8 rounded-full text-lg shadow-lg transition-transform transform hover:scale-105"
           >
             View FAQ
           </Link>

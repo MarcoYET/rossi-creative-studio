@@ -41,6 +41,10 @@ type PortfolioItem = {
   alt: string;
   grid: string;
   heightClass?: string;
+  /** default "cover"; set "contain" for logos that shouldn’t crop */
+  imageFit?: "cover" | "contain";
+  /** optional padding/background for contained images */
+  extraImgClass?: string;
 };
 
 type Category = { id: string; title: string };
@@ -51,12 +55,24 @@ const portfolioItems: PortfolioItem[] = [
   { id: "logo_cotto", category: "logos", src: "/portfolio/brand-logos/cotto-logo.webp", alt: "Cotto Studio brand logo", grid: "md:col-span-1 md:row-span-1 lg:col-span-2 lg:row-span-1", heightClass: "aspect-[4/3]" },
   { id: "logo_bluebell", category: "logos", src: "/portfolio/brand-logos/bluebell-logo.webp", alt: "Blue Bell Laundry Co. brand logo", grid: "md:col-span-1 md:row-span-1 lg:col-span-2 lg:row-span-1", heightClass: "aspect-[4/3]" },
   { id: "logo_deft", category: "logos", src: "/portfolio/brand-logos/deft-logo.webp", alt: "DEFT brand logo", grid: "md:col-span-full md:row-span-2 lg:col-span-6 lg:row-span-2", heightClass: "aspect-[3/1]" },
+
+  // ✅ NEW: YouMe logo — display without cropping
+  {
+    id: "logo_youme",
+    category: "logos",
+    src: "/portfolio/brand-logos/youme-logo.webp",
+    alt: "YouMe brand logo",
+    grid: "md:col-span-full md:row-span-1 lg:col-span-6 lg:row-span-1",
+    heightClass: "aspect-[3/1]",
+    imageFit: "contain",
+    extraImgClass: "p-4 md:p-6 bg-[#0B1E38]" // padding + subtle backdrop behind transparent areas
+  },
+
   { id: "logo_lipt", category: "logos", src: "/portfolio/brand-logos/lipt-logo.webp", alt: "Lipt brand logo", grid: "md:col-span-1 md:row-span-2 lg:col-span-6 lg:row-span-2", heightClass: "aspect-[4/3]" },
   { id: "logo_elmsstasy", category: "logos", src: "/portfolio/brand-logos/elmsstasy-logo.webp", alt: "Elms & Stasy brand logo", grid: "md:col-span-1 md:row-span-1 lg:col-span-3 lg:row-span-1", heightClass: "aspect-[4/3]" },
   { id: "logo_oroma", category: "logos", src: "/portfolio/brand-logos/oroma-logo.webp", alt: "Oroma brand logo", grid: "md:col-span-1 md:row-span-1 lg:col-span-3 lg:row-span-1", heightClass: "aspect-[4/3]" },
   { id: "logo_marlowe", category: "logos", src: "/portfolio/brand-logos/marlowe-logo.webp", alt: "Marlowe Music School brand logo", grid: "md:col-span-1 md:row-span-1 lg:col-span-6 lg:row-span-1", heightClass: "aspect-[3/1]" },
   { id: "logo_tacobite", category: "logos", src: "/portfolio/brand-logos/tacobite-logo.webp", alt: "Taco Bite brand logo", grid: "md:col-span-2 md:row-span-2 lg:col-span-6 lg:row-span-1", heightClass: "aspect-[3/2]" },
-  { id: "logo_youme", category: "logos", src: "/portfolio/brand-logos/youme-logo.webp", alt: "YouMe brand logo", grid: "md:col-span-full md:row-span-1 lg:col-span-6 lg:row-span-1", heightClass: "aspect-[3/1]" },
   { id: "logo_elfuego", category: "logos", src: "/portfolio/brand-logos/elfuego-logo.webp", alt: "El Fuego brand logo", grid: "md:col-span-1 md:row-span-1 lg:col-span-3 lg:row-span-1", heightClass: "aspect-[1/1]" },
   { id: "logo_realcanadianclub", category: "logos", src: "/portfolio/brand-logos/realcanadianclub-logo.webp", alt: "Real Canadian Club brand logo", grid: "md:col-span-1 md:row-span-1 lg:col-span-3 lg:row-span-1", heightClass: "aspect-[1/1]" },
 
@@ -127,7 +143,7 @@ const categories: Category[] = [
   { id: "social", title: "Social Media" },
 ];
 
-/* --- Section component (key lives on the component at call site) --- */
+/* --- Section component --- */
 const PortfolioSection: React.FC<{ category: Category }> = ({ category }) => {
   const items = portfolioItems.filter((item) => item.category === category.id);
 
@@ -144,11 +160,8 @@ const PortfolioSection: React.FC<{ category: Category }> = ({ category }) => {
               key={item.id}
               className={`
                 relative group overflow-hidden rounded-lg shadow-lg border border-white/10
-                transition-all duration-300 ease-in-out
-                hover:shadow-[0_0_20px_rgba(255,255,255,0.15)] hover:brightness-110
-                min-w-0
-                col-span-full
-                ${item.grid}
+                transition-all duration-300 ease-in-out hover:shadow-[0_0_20px_rgba(255,255,255,0.15)]
+                hover:brightness-110 min-w-0 col-span-full ${item.grid}
               `}
             >
               {/* Aspect wrapper controls height; keeps your per-item aspect */}
@@ -168,7 +181,7 @@ const PortfolioSection: React.FC<{ category: Category }> = ({ category }) => {
                     alt={item.alt}
                     fill
                     sizes="(max-width: 640px) 100vw, (max-width: 768px) 50vw, (max-width: 1024px) 33vw, (min-width: 1025px) 66vw"
-                    className="object-cover transition-all duration-500 ease-in-out transform"
+                    className={`${item.imageFit === "contain" ? "object-contain " : "object-cover "} ${item.extraImgClass ?? ""} transition-all duration-500`}
                     priority={item.id === "logo_dolcilimoni"}
                   />
                 )}
@@ -227,14 +240,14 @@ export default function PortfolioPage() {
           <h2 className="font-industry text-3xl font-bold mb-6 text-accent-pink-dark">
             Ready to Start Your Project?
           </h2>
-        <p className="font-newbery text-lg text-foreground/80 mb-8">
+          <p className="font-newbery text-lg text-foreground/80 mb-8">
             Let&apos;s create something remarkable together.
           </p>
           <Link
             href="/contact"
-            className="font-industry bg-primary-accent hover:opacity-80 text-white font-bold py-3 px-8 rounded-full text-lg shadow-lg transition-transform transform hover:scale-105"
+            className="font-industry bg-primary-accent hover:opacity-80 text-white font-bold py-3 px-8 rounded-full text-lg shadow-lg transition-transform transform hover:scale-105 whitespace-nowrap leading-none"
           >
-            Contact Us
+            Inquire About a Custom Service
           </Link>
         </div>
       </section>
