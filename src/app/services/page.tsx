@@ -314,8 +314,12 @@ export default function ServicesPage() {
         </div>
 
         <div className="text-center mt-16">
-          <Link href="/contact" className="px-10 py-5 bg-primary-accent text-white font-semibold rounded-full hover:bg-red-700 transition-colors text-lg shadow-lg">
-            Inquire About a Custom Service
+          <Link
+              href="/contact"
+              className="inline-block px-6 py-3 md:px-10 md:py-5 bg-primary-accent text-white font-semibold rounded-full
+               hover:bg-red-700 transition-colors text-base md:text-lg shadow-lg whitespace-nowrap leading-none"
+           >
+              Inquire About a Custom Service
           </Link>
         </div>
       </section>
